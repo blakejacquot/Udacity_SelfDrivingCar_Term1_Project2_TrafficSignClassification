@@ -24,7 +24,48 @@ Please discuss how did you train your model. (Missed Answer)
 Please discuss how would you evaluate the model. (Missed Answer)
 
 ### Student response
-TBD
+Please discuss how did you choose the optimzer:
+I chose the Adam optimizer with default settings. This is the optimizer used in the
+reference paper. I started off using a general gradient descent optimizer, but it did not work well
+(I'm not sure why).
+
+Please discuss how did you decide the number of type of layers:
+The number of layers was chosen to be the same as the reference paper. It is 3 layers deep
+with one final fully-connected layer. Kernel size was 5x5 for each layer. If I had more time,
+I may have included dropout (to prevent overfitting) and activation layers (such as Relu) to
+increase ability to fit non-linear features.
+
+Please discuss how did you tune the hyperparameter:
+Batch size = 128. This was chosen to match an example I found. It worked well. The higher
+the number, the easier it is to parallelize computing. However, it also means the variance
+of a given sample is lower, which may result in overfitting. Maybe the larger the dataset, the
+higher this number can be made without overfitting.
+
+Number of epochs = 20. See more discussion below.
+
+Learning rate = 0.001. This is the default for Adam. Lower learning rate would possibly increase
+the chance of finding the best minima. But it also increases risk you will get trapped in
+local rather than global minima.
+
+Please discuss how did you train your model:
+The model didn't improve much after the first 5 epochs, so the remaining epochs were maybe
+unneeded. I reported validation accuracy to a log file for each batch to ensure learning was
+happening on a per-batch basis. I did this because my first optimizer wasn't resulting in
+much improvement here. After each epoch I reported out the validation accuracy and cost. If the
+former was increasing and the latter decreasing, the model was improving. If not, it had
+plateaued and something needed to change (e.g. the learning rate).
+
+Please discuss how would you evaluate the model:
+I evaluated the model during training by monitoring the cost, validation accuracy, and testing
+accuracy. As cost decreases, it means the cost function is getting closer to a minima (either
+global or local). Validation accuracy indicates how well the model is fitting the validation set.
+Finally, the test accuracy is a larger dataset against which ensure accuracy.
+
+Of all available samples, the train/test split was 80%/20%. The remaining training data was
+again split 80%/20% into a train/validation set. The purpose of the validation set is to check
+accuracy at intermediate states. This helps avoid overfitting by ensuring cost is decreasing
+and accuracy increasing as the model trains. The user can tweak things at early stages and
+still maintain the virgin test set for final accuracy check.
 
 ## Addressing second comments
 
@@ -43,6 +84,31 @@ Please compare the prediction accuracy of the result of the captured images with
 validation set.
 
 ### Student response
-TBD
+Thanks for the comments.
 
+I'm unclear about what is required here. If more is needed than what I have included below
+I can try to fix it. I will note that I have now completed and submitted project 3.
+
+I think the feedback is related to question 7 and
+rubric item "Performance on New Images". I thought I had addressed the rubric by saying
+the model picked out the 'yield' and 'stop' signs correctly and incorrectly identified
+the other 3, though it got the general shape correct.
+
+Tying this in with question 8, we can say that the model was 99.9% and 99.9% confident on
+the identification of the 'yield' and 'stop' signs, which is good because it correctly
+identified them.
+
+For the other three, the results are mixed.
+
+'Circular 50 sign'
+78% confidence it's label 7. 21% confidence it's label 40.
+
+'Circular pedestrian sign'
+2: 47% confidence it's label 40. 8% confidence it's label 1. 6% confidence it's label
+4. 3% confidence it's label 15.
+
+'Circular bicycle sign'
+3: 98% confidence it's label 40.
+
+[trainlog]: /log.txt
 [feedback]: https://review.udacity.com/#!/reviews/290494
