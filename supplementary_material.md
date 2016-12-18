@@ -1,5 +1,5 @@
 # This file addresses comments from the reviewer regarding my first submission.
-Comments [here]:[feedback]
+Comments [feedback]:[here]
 
 ## Addressing first comments
 

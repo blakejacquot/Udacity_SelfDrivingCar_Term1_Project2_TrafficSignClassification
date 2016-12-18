@@ -1,6 +1,9 @@
-# Addressing first comments
+# This file addresses comments from the reviewer regarding my first submission.
+Comments [feedback]:[here]
 
-## Reviewer feedback
+## Addressing first comments
+
+### Reviewer feedback
 
 It is great that you tried to play around with different architectures, however, seems
 like you forgot to mention what are those architecture you played with.
@@ -20,12 +23,12 @@ Please discuss how did you tune the hyperparameter. (Missed Answer)
 Please discuss how did you train your model. (Missed Answer)
 Please discuss how would you evaluate the model. (Missed Answer)
 
-## Student response
+### Student response
 TBD
 
-# Addressing second comments
+## Addressing second comments
 
-## Reviewer feedback
+### Reviewer feedback
 You did a very nice job to predict the captured image, however, it only partially covered
  the question requirement. Let me explain it a bit below.
 
@@ -39,5 +42,7 @@ the prediction difference between the validation and real world testing.
 Please compare the prediction accuracy of the result of the captured images with the
 validation set.
 
-## Student response
+### Student response
 TBD
+
+[feedback]: https://review.udacity.com/#!/reviews/290494
